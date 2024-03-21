@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Header from "./components/loan_calculator/Header"
 import Button from "./components/loan_calculator/Button";
-
+import { formatMoney } from "./helpers";
 function App() {
   const [amount, setAmount] = useState(10000);
   const min = 0;
@@ -55,7 +55,9 @@ function App() {
         value={amount}
       />
 
-      <p className="text-center my-10 text-5xl font-extrabold text-indigo-600">{amount}</p>
+      <p className="text-center my-10 text-5xl font-extrabold text-indigo-600">
+        {formatMoney(amount)}
+        </p>
     </div>
   )
 }

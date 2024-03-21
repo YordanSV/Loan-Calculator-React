@@ -4,6 +4,7 @@ import Button from "./components/loan_calculator/Button";
 import { formatMoney } from "./helpers";
 function App() {
   const [amount, setAmount] = useState(10000);
+  const [ months, setMonths] = useState(6)
   const min = 0;
   const max = 20000;
   const step = 100;
@@ -64,7 +65,9 @@ function App() {
       </h2>
 
       <select className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center
-      text-xl font-bold text-gray-500">
+      text-xl font-bold text-gray-500"
+      value={6}
+      onChange={e => setMonths(+e.target.value)}>
         <option value="6">6 months</option>
         <option value="12">12 months</option>
         <option value="24">24 months</option>

@@ -36,13 +36,13 @@ function App() {
       <Header />
 
       <div className="flex justify-between my-6">
-        <Button 
-        operator = '-'
-        function = {handleClickDecrement}
+        <Button
+          operator='-'
+          function={handleClickDecrement}
         />
-        <Button 
-        operator = '+'
-        function = {handleClickIncrement}
+        <Button
+          operator='+'
+          function={handleClickIncrement}
         />
       </div>
       <input
@@ -57,7 +57,18 @@ function App() {
 
       <p className="text-center my-10 text-5xl font-extrabold text-indigo-600">
         {formatMoney(amount)}
-        </p>
+      </p>
+
+      <h2 className="text-2xl font-extrabold text-gray-500 text-center">
+        Choose a repayment <span className="text-indigo-600">term</span>
+      </h2>
+
+      <select className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center
+      text-xl font-bold text-gray-500">
+        <option value="6">6 months</option>
+        <option value="12">12 months</option>
+        <option value="24">24 months</option>
+      </select>
     </div>
   )
 }

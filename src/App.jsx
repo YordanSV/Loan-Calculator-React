@@ -1,10 +1,12 @@
 import { useState } from "react"
 import Header from "./components/loan_calculator/Header"
 import Button from "./components/loan_calculator/Button";
-import { formatMoney } from "./helpers";
+import { formatMoney, calculateTotalPay } from "./helpers";
 function App() {
   const [amount, setAmount] = useState(10000);
   const [months, setMonths] = useState(6)
+  const [total, setTotal] = useState(0)
+  
   const min = 0;
   const max = 20000;
   const step = 100;

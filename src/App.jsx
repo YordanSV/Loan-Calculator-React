@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./components/loan_calculator/Header"
 import Button from "./components/loan_calculator/Button";
 import { formatMoney, calculateTotalPay } from "./helpers";
@@ -6,6 +6,16 @@ function App() {
   const [amount, setAmount] = useState(10000);
   const [months, setMonths] = useState(6)
   const [total, setTotal] = useState(0)
+  const [pay, setPay] = useState(0)
+  
+  useEffect(() => {
+    const totalResultPay = calculateTotalPay(amount, months);
+    setTotal(totalResultPay);
+  }, [amount,months]);
+
+  useEffect(() => {
+    setPay(total / months);
+  }, [total])
   
   const min = 0;
   const max = 20000;
@@ -68,8 +78,9 @@ function App() {
 
       <select className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center
       text-xl font-bold text-gray-500"
-        value={6}
-        onChange={e => setMonths(+e.target.value)}>
+        value={months}
+        onChange={e => setMonths(+e.target.value)}
+        >
         <option value="6">6 months</option>
         <option value="12">12 months</option>
         <option value="24">24 months</option>
@@ -81,8 +92,8 @@ function App() {
         </h2>
 
         <p className="text-xl text-gray-500 text-center font-bold">{months} Months</p>
-        <p className="text-xl text-gray-500 text-center font-bold">Total to pay</p>
-        <p className="text-xl text-gray-500 text-center font-bold">Monthly payments</p>
+        <p className="text-xl text-gray-500 text-center font-bold">{formatMoney(total)} Total to pay</p>
+        <p className="text-xl text-gray-500 text-center font-bold">{formatMoney(pay)} Monthly payments</p>
       </div>
     </div>
   )

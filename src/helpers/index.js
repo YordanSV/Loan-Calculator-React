@@ -9,7 +9,6 @@ const formatMoney = (value) => {
 const calculateTotalPay = (amount, term) => {
     let total;
 
-    console.log(amount+' '+term)
     // The greater the amount, the lower the interest.
     if (amount < 5000) {
         total = amount * 1.5;
